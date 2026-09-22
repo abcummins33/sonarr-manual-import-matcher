@@ -1,0 +1,21 @@
+{
+  "name": "sonarr-manual-import-season-matcher",
+  "version": "1.0.0",
+  "description": "Auto-matches episode files with missing/unspecified/mismatched season folders to the correct season/episode in Sonarr's Manual Import screen via the v3 API.",
+  "keywords": [
+    "sonarr",
+    "manual-import",
+    "missing-season",
+    "unknown-season",
+    "season-mismatch",
+    "episode-matching"
+  ],
+  "main": "sonarr-manual-import-match.js",
+  "bin": {
+    "sonarr-manual-import-match": "./sonarr-manual-import-match.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
