@@ -328,6 +328,8 @@ function matchEpisode(filename, episodes, seriesTitle) {
   //    episode title with no numbering at all).
   const cleanedName = normalizeTitle(
     collapseAcronyms(base)
+      .replace(/^\d{1,4}\s+/, '') // drop a leading track/episode counter, e.g. "200   Jerrys Nephew"
+      .replace(/[[(](19|20)\d{2}[\])]/g, '') // drop a bracketed/parenthesized year, e.g. "[1975]"
       .replace(/[._]/g, ' ')
       .replace(/\b(1080p|720p|2160p|x264|x265|h264|h265|hevc|web[- ]?dl|webrip|bluray|hdtv|amzn|nf|dv|hdr)\b/gi, '')
   );
@@ -400,6 +402,7 @@ function titleSimilarity(a, b) {
 function normalizeTitle(str) {
   return String(str)
     .toLowerCase()
+    .replace(/['’]/g, '') // drop apostrophes so "jerry's" -> "jerrys", matching how filenames usually drop them
     .replace(/[^a-z0-9 ]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
